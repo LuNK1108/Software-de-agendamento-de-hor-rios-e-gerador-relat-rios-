@@ -1,0 +1,81 @@
+/* ===========================
+   Estilo geral da página
+   =========================== */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f9;
+    margin: 20px;
+}
+
+h1, h2 {
+    color: #333;
+    text-align: center;
+}
+
+/* ===========================
+   Formulário de cadastro/edição
+   =========================== */
+form {
+    max-width: 500px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 0 8px rgba(0,0,0,0.1);
+    border-radius: 8px;
+}
+
+form label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #333;
+}
+
+form input {
+    width: 100%;
+    padding: 8px 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+    box-sizing: border-box;
+}
+
+/* ===========================
+   Botões do formulário
+   =========================== */
+form .btn {
+    display: inline-block;
+    padding: 10px 15px;
+    margin-top: 10px;
+    margin-right: 5px;
+    font-size: 14px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    color: white;
+    transition: background-color 0.2s;
+}
+
+/* Botão Cadastrar */
+form .btn-cadastrar {
+    background-color: #007bff;
+}
+
+form .btn-cadastrar:hover {
+    background-color: #0056b3;
+}
+
+/* Botão Voltar */
+form .btn-voltar {
+    background-color: #6c757d;
+}
+
+form .btn-voltar:hover {
+    background-color: #5a6268;
+}
+
+/* Centraliza os botões */
+form .btn-container {
+    text-align: center;
+}

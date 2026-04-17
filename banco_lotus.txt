@@ -1,0 +1,120 @@
+CREATE TABLE paciente (
+    idPacientes INT AUTO_INCREMENT PRIMARY KEY,
+    nome VARCHAR(50) NOT NULL,
+    email VARCHAR(100) UNIQUE NOT NULL,
+    senha VARCHAR(200) NOT NULL,
+    idade INT,
+    cpf DECIMAL(11,0) UNIQUE,
+    data_cadastro TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE cargo (
+    idcargos INT AUTO_INCREMENT PRIMARY KEY,
+    nome VARCHAR(50) NOT NULL
+);
+
+CREATE TABLE profissional (
+    idprofissional INT AUTO_INCREMENT PRIMARY KEY,
+    nome VARCHAR(50) NOT NULL,
+    email VARCHAR(100) UNIQUE NOT NULL,
+    senha VARCHAR(200) NOT NULL,
+    cpf DECIMAL(11,0) UNIQUE,
+    telefone VARCHAR(15),
+    idcargo INT,
+    data_contratacao DATE,
+    FOREIGN KEY (idcargo) REFERENCES cargo(idcargos)
+        ON UPDATE CASCADE
+        ON DELETE SET NULL
+);
+
+-- 1️⃣ Horários disponibilizados pelo profissional
+CREATE TABLE horarios_disponiveis (
+    idHorario INT AUTO_INCREMENT PRIMARY KEY,
+    idProfissional INT NOT NULL,
+    data DATE NOT NULL,
+    horario TIME NOT NULL,
+    disponivel BOOLEAN DEFAULT TRUE,
+    FOREIGN KEY (idProfissional) REFERENCES profissional(idprofissional)
+        ON UPDATE CASCADE
+        ON DELETE CASCADE
+);
+
+-- 2️⃣ Agendamento feito pelo paciente
+CREATE TABLE agendamento (
+    idAgendamento INT AUTO_INCREMENT PRIMARY KEY,
+    idPaciente INT NOT NULL,
+    idHorario INT NOT NULL,
+    status VARCHAR(20) DEFAULT 'Agendado',
+    observacao TEXT,
+    data_criacao TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (idPaciente) REFERENCES paciente(idPacientes)
+        ON UPDATE CASCADE
+        ON DELETE CASCADE,
+    FOREIGN KEY (idHorario) REFERENCES horarios_disponiveis(idHorario)
+        ON UPDATE CASCADE
+        ON DELETE CASCADE
+);
+
+CREATE TABLE prontuario (
+    idprontuario INT AUTO_INCREMENT PRIMARY KEY,
+    descricao TEXT,
+    diagnostico VARCHAR(100),
+    medicamento VARCHAR(100),
+    exame TEXT,
+    anotacao TEXT,
+    idPacientes INT,
+    data_registro TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (idPacientes) REFERENCES paciente(idPacientes)
+        ON UPDATE CASCADE
+        ON DELETE CASCADE
+);
+
+CREATE TABLE relatorio (
+    idrelatorio INT AUTO_INCREMENT PRIMARY KEY,
+    idProfissional INT,
+    idPaciente INT,
+    data_relatorio TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    resumo TEXT,
+    recomendacoes TEXT,
+    conclusao TEXT,
+    FOREIGN KEY (idProfissional) REFERENCES profissional(idprofissional)
+        ON UPDATE CASCADE
+        ON DELETE SET NULL,
+    FOREIGN KEY (idPaciente) REFERENCES paciente(idPacientes)
+        ON UPDATE CASCADE
+        ON DELETE CASCADE
+);
+
+CREATE TABLE anotacao (
+    idanotacaoprivada INT AUTO_INCREMENT PRIMARY KEY,
+    anotacao TEXT,
+    idRelatorio INT,
+    idProfissional INT,
+    data_criacao TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (idRelatorio) REFERENCES relatorio(idrelatorio)
+        ON UPDATE CASCADE
+        ON DELETE CASCADE,
+    FOREIGN KEY (idProfissional) REFERENCES profissional(idprofissional)
+        ON UPDATE CASCADE
+        ON DELETE CASCADE
+);
+
+CREATE TABLE pagamento (
+    idregistro_de_pagamento INT AUTO_INCREMENT PRIMARY KEY,
+    idPaciente INT,
+    valor DOUBLE,
+    data_pagamento TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    metodo_pagamento VARCHAR(50),
+    FOREIGN KEY (idPaciente) REFERENCES paciente(idPacientes)
+        ON UPDATE CASCADE
+        ON DELETE CASCADE,
+);
+
+CREATE TABLE historico_agendamento (
+    idHistorico INT AUTO_INCREMENT PRIMARY KEY,
+    idAgendamento INT NOT NULL,
+    data_registro DATETIME DEFAULT CURRENT_TIMESTAMP,
+    pendente INT
+    FOREIGN KEY (idAgendamento) REFERENCES agendamento(idagendamento) ON DELETE CASCADE
+);
+

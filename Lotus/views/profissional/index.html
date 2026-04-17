@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agenda do Profissioal</title>
+    <link rel="stylesheet" href="../../assets/css/profissional/profissional_index.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Sidebar lateral -->
+        <aside class="sidebar">
+            <h2>Painel</h2>
+            <button type="button" class="ver pulse" onclick="editar()">Editar</button>
+            <button type="button" class="ver pulse" onclick="inserir_horario()">Adicionar Horário</button>
+            <button type="button" class="ver pulse" onclick="horario_profissional()">Remover Horário</button>
+            
+        </aside>
+
+        <!-- Área principal -->
+        <main class="main-content">
+            
+            <!-- Horários agendados -->
+            <section class="section-horarios">
+                <h2>Horários Agendados</h2>
+                <div id="horarios_agendados" class="lista-horarios"></div>
+            </section>
+        
+            <!-- Prontuário -->
+            <section class="section-info">
+                <h2>Informações</h2>
+                <div id="info"></div>
+            </section>
+        </main>
+    </div>
+    <script src="../../assets/js/profissional/profissional_get.js"></script>
+    <script src="../../assets/js/profissional/profissional_editar.js"></script>
+    <script src="../../assets/js/profissional/profissional_index.js"></script>
+</body>
+</html>

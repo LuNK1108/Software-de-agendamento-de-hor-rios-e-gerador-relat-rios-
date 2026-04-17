@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agenda do Paciente</title>
+    <link rel="stylesheet" href="../../assets/css/paciente/paciente_index.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Sidebar lateral -->
+        <aside class="sidebar">
+            <h2>Painel</h2>
+            <button type="button" class="agendar pulse" onclick="lista_profissional()">Agendar Consulta</button>
+            <button type="button" class="ver pulse" onclick="prontuario()">Ver Prontuário</button>
+            <button type="button" class="ver" onclick="ver_historico()">Historico</button>
+            <button type="button" class="ver" onclick="editar()">Editar</button>
+            
+            
+        </aside>
+
+        <!-- Área principal -->
+        <main class="main-content">
+            
+            <!-- Horários agendados -->
+            <section class="section-horarios">
+                <h2>Horários Agendados</h2>
+                <div id="horarios_agendados" class="lista-horarios"></div>
+            </section>
+            
+            <!-- Profissionais e horários disponíveis -->
+            <section class="section-profissionais">
+                <h2>Profissionais e Horários</h2>
+                <div class="cards-container">
+                    <div id="profissional" class="coluna-prof"></div>
+                    <div id="horarios" class="coluna-horarios"></div>
+                </div>
+            </section>
+
+            <!-- Prontuário -->
+            <section class="section-info">
+                <h2>Informações</h2>
+                <div id="info"></div>
+            </section>
+
+            <!-- Prontuário -->
+            <section class="section-info">
+                <h2>Pagamentos</h2>
+                <div id="pagamento"></div>
+            </section>
+        </main>
+    </div>
+
+    <script src="../../assets/js/paciente/paciente_get.js"></script>
+    <script src="../../assets/js/paciente/paciente_editar.js"></script>
+    <script src="../../assets/js/paciente/paciente_index.js"></script>
+</body>
+</html>

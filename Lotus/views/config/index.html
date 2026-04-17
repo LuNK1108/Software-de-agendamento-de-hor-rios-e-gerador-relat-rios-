@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Painel de Gerenciamento</title>
+    <link rel="stylesheet" href="../../assets/css/config/index.css">
+</head>
+<body>
+    <header class="header">
+        <h1>Painel de Gerenciamento</h1>
+    </header>
+
+    <main class="container-geral">
+        <!-- Pacientes -->
+        <section class="secao">
+            <div class="secao-header">
+                <h2>Pacientes</h2>
+                <a href="../paciente/inserir.html" class="botao">Registrar</a>
+            </div>
+            <div id="lista_pacientes" class="tabela-container"></div>
+        </section>
+
+        <!-- Profissionais -->
+        <section class="secao">
+            <div class="secao-header">
+                <h2>Profissionais</h2>
+                <a href="../profissional/inserir.html" class="botao">Registrar</a>
+            </div>
+            <div id="lista_profissionais" class="tabela-container"></div>
+        </section>
+    </main>
+
+    <script src="../../assets/js/paciente/paciente_listar.js"></script>
+    <script src="../../assets/js/paciente/paciente_inserir.js"></script>
+    <script src="../../assets/js/paciente/paciente_excluir.js"></script>
+    <script src="../../assets/js/profissional/profissional_listar.js"></script>
+    <script src="../../assets/js/profissional/profissional_excluir.js"></script>
+</body>
+</html>
